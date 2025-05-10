@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #2563eb;
+            --accent-color: #f59e0b;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --success-color: #4bb543;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding-top: 80px; /* Space for fixed header */
+        }
+        
+        /* Header Styles (consistent with other pages) */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Form Container Styles */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 40px 20px;
+        }
+        
+        fieldset {
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        legend {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 0 15px;
+            background-color: white;
+            border-radius: 6px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-top: 8px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1em;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+        
+        .note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .back {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back:hover {
+            background-color: var(--light-color);
+        }
+        
+        .back a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 15px;
+            }
+            
+            legend {
+                font-size: 1.3rem;
+            }
+            
+            fieldset {
+                padding: 20px;
+            }
+            
+        }
+
+        .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    color: var(--dark-color);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+               
+                <span>Doulingo</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">Tentang</a></li>
+                    <li><a href="fitur.html">Fitur</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <fieldset>
+            <legend>Form Pendaftaran</legend>
+            <label>
+                Nama: 
+                <input type="text" name="nama" placeholder="Masukkan nama lengkap">
+            </label>
+            <label>
+                Email: 
+                <input type="email" name="email" placeholder="Masukkan alamat email">
+            </label>
+            <p>Minat Belajar Bahasa: 
+                <select>
+                    <option value="" disabled selected>Pilih bahasa</option>
+                    <option>Bahasa Inggris</option>
+                    <option>Bahasa Indonesia</option>
+                    <option>Bahasa Turkey</option>
+                    <option>Bahasa Arab</option>
+                    <option>Bahasa Prancis</option>
+                    <option>Bahasa Spanyol</option>
+                    <option>Bahasa Italia</option>
+                    <option>Bahasa Jepang</option>
+                </select>
+            </p>
+            <div class="button-container">
+                <button onclick="submit()">Daftar Sekarang</button>
+            </div>
+            
+            <p class="note"><strong>Note: </strong>Data dan informasi yang diisi pelanggan akan dijamin keamanannya</p>
+            <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <div class="social-links">
+      
+          <a href="https://www.facebook.com/fauzan.nolimit.77" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@fauisnataa_?_t=ZS-8w3ANzqS0tr&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/fauisnataa?igsh=MnFhMTRnMG1yNzIx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/fauzan-isnata-87879a28a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+     
+     
+  </div>
+        </fieldset>
+
+        <button class="back"><a href="index.html">Kembali ke Beranda</a></button>
+    </div>
+        
+ 
+  </div>
+
+    <script src="hy.js"></script>
+</body>
+</html>

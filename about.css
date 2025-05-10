@@ -1,0 +1,208 @@
+/* about.css */
+
+/* Base Styles */
+:root {
+  --primary-color: #1e3a8a;
+  --secondary-color: #2563eb;
+  --accent-color: #f59e0b;
+  --light-color: #f8fafc;
+  --dark-color: #1e293b;
+  --success-color: #4bb543;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  line-height: 1.6;
+  padding-top: 80px; /* Space for fixed header */
+}
+
+/* Header Styles (same as features page) */
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.logo i {
+  margin-right: 10px;
+  color: var(--accent-color);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 30px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Main Content Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+  margin: 15px auto 0;
+}
+
+h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 40px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-color);
+  text-align: center;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+strong {
+  color: var(--primary-color);
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+thead tr {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: left;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+th:first-child, td:first-child {
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* Checkmark and Cross Styles */
+td[aria-label="Available"] {
+  color: var(--success-color);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+td[aria-label="Not available"] {
+  color: #e74c3c;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .header-container {
+    flex-direction: column;
+  }
+  
+  nav ul {
+    margin-top: 15px;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Add this to your HTML for the checkmarks and crosses */
+/* <td aria-label="Available">✔</td> */
+/* <td aria-label="Not available">❌</td> */
